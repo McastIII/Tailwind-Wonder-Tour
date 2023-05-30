@@ -13,53 +13,72 @@
 
 @layer components{
     .header__wrapper{
-        @apply flex items-center border-b-[1px] z-50;
+        @apply flex items-center z-50 lg:justify-evenly;
+    }
+    .header .container{
+        @apply border-b-[1px] py-[.5rem];
     }
 
-    .header__nav{
-        @apply hidden;
-    }
     .header__social{
-        @apply p-[.5rem] border-b-[1px];
+        @apply px-[.5rem] py-[1.5rem] border-b-[1px];
     }
     .header__social ul{
         @apply flex justify-center gap-[1rem];
     }
+    .header__social ul li a i{
+        @apply text-[1.2rem];
+    }
     .header__actions{
-        @apply block fixed top-[4.9rem] w-[40%] left-[-100rem] h-[100vh] overflow-hidden overflow-y-auto ease-in duration-[.5s] lg:hidden;
+        @apply block fixed top-[4.9rem] w-[40%] left-[-100rem] h-[100vh] pb-[6rem] overflow-hidden overflow-y-auto ease-in duration-[.5s] lg:hidden;
     }
     .header__actions.open{
         @apply left-0 ease-in duration-[.5s];
     }
+    .header__list{
+        @apply lg:flex;
+    }
+    .header__item:first-child{
+        @apply bg-primary text-light;
+    }
     .header__item h4{
-        @apply flex justify-between text-[1rem] cursor-pointer hover:bg-primary duration-[.5s] transition-all;
+        @apply flex justify-between py-[1.2rem] text-[1rem] cursor-pointer hover:bg-primary hover:text-light duration-[.5s] transition-all;
     }
 
     .header__item i{
         @apply transition ease-linear duration-300;
     }
-
     .header__item i.open{
         @apply transition ease-linear duration-300 rotate-[180deg];
     }
-    .header__item{
-        @apply my-[1rem];
-    }
+
     .header__item ul{
         @apply max-h-0 overflow-hidden duration-[.5s] transition ease-in;
     }
+    .header__item ul li{
+        @apply my-[.5rem];
+    }
 
     .header__item ul.open{
-        @apply max-h-[50rem] p-[1rem] transition ease-linear duration-[.5s];
+        @apply max-h-[200rem] p-[1rem] transition ease-linear duration-[.5s];
     }
-    .header__item ul li {
-        @apply my-[2rem]  hover:bg-primary duration-[.5s] transition-all;
+    .header__item ul li{
+        @apply hover:bg-primary py-[1rem] hover:text-light duration-[.5s] transition-all;
     }
-    .header__item ul li span{
-        @apply  text-primary border-b-[1px];
+    .elements{
+        @apply max-h-0 overflow-hidden duration-[.5s] transition ease-in;
     }
+    .elements.open{
+        @apply max-h-[200rem] overflow-visible py-[.5rem] transition ease-linear duration-[.5s];
+    }
+    .elements ul{
+        @apply max-h-[200rem] my-[1rem] overflow-visible duration-[.5s] transition ease-in;
+    }
+    .elements h5{
+        @apply text-primary text-[1.2rem] border-b-[1px];
+    }
+
     .toggle__menu{
-        @apply px-[.8rem] py-[1rem];
+        @apply px-[.8rem] py-[1rem] lg:hidden;
     }
     .toggle__menu span{
         @apply w-[1.5rem] h-[.15rem] bg-dark block rounded-full duration-[.5s] ease-in ;
@@ -68,14 +87,13 @@
         @apply my-[.2rem];
     }
     .toggle__menu.open span:first-child{
-        @apply w-[1rem] translate-x-0 translate-y-[12px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
+        @apply w-[.5rem] translate-x-0 translate-y-[9px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
     }
     .toggle__menu.open span:last-child{
-        @apply w-[1rem] translate-x-0 translate-y-[-13px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
+        @apply w-[.5rem] translate-x-0 translate-y-[-9px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
     }
-
     .ellipsis{
-        @apply px-[.8rem] py-[1rem];
+        @apply px-[.8rem] py-[1rem] absolute right-[1.5rem] lg:hidden;
     }
     .ellipsis span{
         @apply w-[.3rem] h-[.3rem] bg-dark block rounded-full duration-[.5s] ease-in ;
@@ -84,14 +102,45 @@
         @apply my-[.2rem];
     }
     .ellipsis.open span:first-child{
-        @apply translate-x-0 translate-y-[6px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
+        @apply translate-x-0 translate-y-[15px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
     }
     .ellipsis.open span:last-child{
-        @apply translate-x-0 translate-y-[-5px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
+        @apply translate-x-0 translate-y-[-15px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
     }
-    .ellipsis.open span:nth-child(2){
-        @apply opacity-0 duration-[.5s] ease-in;
+    .header__details{
+        @apply block fixed bottom-[-100rem] max-h-0 overflow-hidden right-0 bg-light p-[1rem] ease-linear duration-[.5s] lg:relative lg:top-0 lg:max-h-[3rem] lg:flex lg:items-center lg:gap-[2rem];
     }
-
-
+    .header__details i{
+        @apply mr-[1rem];
+    }
+    .header__details p{
+        @apply p-[.5rem];
+    }
+    .header__details.open{
+        @apply bottom-[41rem] max-h-[12rem] ease-linear duration-[.5s];
+    }
+    .header__btn{
+        @apply my-[1rem] flex justify-center;
+    }
+    .header__btn a{
+        @apply text-center p-[.7rem] bg-transparent border-[2px] border-primary w-[10rem] h-[3rem];
+    }
+    .header__btn a:hover{
+        @apply bg-[#50ba87] duration-[.5s] transition-colors;
+    }
+    .header__nav{
+        @apply hidden lg:flex lg:justify-center lg:items-center lg:bg-dark;
+    }
+    .header__icons ul{
+        @apply flex;
+    }
+    .header__icons{
+        @apply px-[.5rem] py-[1.5rem] border-b-[1px];
+    }
+    .header__icons ul{
+        @apply flex justify-center gap-[1rem];
+    }
+    .header__icons ul li a i{
+        @apply text-[1.2rem];
+    }
 }
