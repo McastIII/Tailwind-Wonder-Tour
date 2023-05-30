@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+    @apply max-w-[140rem] mx-auto p-[1.5rem];
+}
+@layer base{
+    html{
+        font-family:"Montserrat", sans-serif, Arial, sans-serif;
+    }
+}
+
+@layer components{
+    .header__wrapper{
+        @apply flex items-center border-b-[1px] z-50;
+    }
+
+    .header__nav{
+        @apply hidden;
+    }
+    .header__social{
+        @apply p-[.5rem] border-b-[1px];
+    }
+    .header__social ul{
+        @apply flex justify-center gap-[1rem];
+    }
+    .header__actions{
+        @apply block fixed top-[4.9rem] w-[40%] left-[-100rem] h-[100vh] overflow-hidden overflow-y-auto ease-in duration-[.5s] lg:hidden;
+    }
+    .header__actions.open{
+        @apply left-0 ease-in duration-[.5s];
+    }
+    .header__item h4{
+        @apply flex justify-between text-[1rem] cursor-pointer hover:bg-primary duration-[.5s] transition-all;
+    }
+
+    .header__item i{
+        @apply transition ease-linear duration-300;
+    }
+
+    .header__item i.open{
+        @apply transition ease-linear duration-300 rotate-[180deg];
+    }
+    .header__item{
+        @apply my-[1rem];
+    }
+    .header__item ul{
+        @apply max-h-0 overflow-hidden duration-[.5s] transition ease-in;
+    }
+
+    .header__item ul.open{
+        @apply max-h-[50rem] p-[1rem] transition ease-linear duration-[.5s];
+    }
+    .header__item ul li {
+        @apply my-[2rem]  hover:bg-primary duration-[.5s] transition-all;
+    }
+    .header__item ul li span{
+        @apply  text-primary border-b-[1px];
+    }
+    .toggle__menu{
+        @apply px-[.8rem] py-[1rem];
+    }
+    .toggle__menu span{
+        @apply w-[1.5rem] h-[.15rem] bg-dark block rounded-full duration-[.5s] ease-in ;
+    }
+    .toggle__menu span:nth-child(2){
+        @apply my-[.2rem];
+    }
+    .toggle__menu.open span:first-child{
+        @apply w-[1rem] translate-x-0 translate-y-[12px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
+    }
+    .toggle__menu.open span:last-child{
+        @apply w-[1rem] translate-x-0 translate-y-[-13px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
+    }
+
+    .ellipsis{
+        @apply px-[.8rem] py-[1rem];
+    }
+    .ellipsis span{
+        @apply w-[.3rem] h-[.3rem] bg-dark block rounded-full duration-[.5s] ease-in ;
+    }
+    .ellipsis span:nth-child(2){
+        @apply my-[.2rem];
+    }
+    .ellipsis.open span:first-child{
+        @apply translate-x-0 translate-y-[6px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
+    }
+    .ellipsis.open span:last-child{
+        @apply translate-x-0 translate-y-[-5px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
+    }
+    .ellipsis.open span:nth-child(2){
+        @apply opacity-0 duration-[.5s] ease-in;
+    }
+
+
+}
