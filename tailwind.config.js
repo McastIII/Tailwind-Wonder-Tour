@@ -8,7 +8,13 @@ module.exports = {
         light:'#ffffff',
         primary:'#07b4ab',
         grey: '#f6f6f6',
-      }
+      },
+
+      backgroundImage: {
+        'slide1': 'url("./img/slider-4-slide-1-1920x678.jpg")',
+        'slide2': 'url("./img/slider-4-slide-2-1920x678.jpg")',
+        'slide3': 'url("./img/slider-4-slide-3-1920x678.jpg")',
+      },
     },
   },
   plugins: [],

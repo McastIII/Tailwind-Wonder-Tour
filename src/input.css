@@ -5,6 +5,16 @@
 .container{
     @apply max-w-[140rem] mx-auto p-[1.5rem];
 }
+.tns-nav{
+    @apply absolute z-[999] right-0 top-[50%] lg:top-[45%] lg:right-[15%];
+}
+.tns-nav button{
+    @apply bg-dark hover:bg-light hover:opacity-30 focus:bg-primary w-[1rem] h-[1rem] m-[.5rem] flex;
+}
+.tns-nav .tns-nav-active{
+    @apply bg-primary;
+}
+
 @layer base{
     html{
         font-family:"Montserrat", sans-serif, Arial, sans-serif;
@@ -13,14 +23,10 @@
 
 @layer components{
     .header__wrapper{
-        @apply flex items-center z-50 lg:justify-evenly;
+        @apply flex items-center z-50 lg:justify-evenly border-b-[1px];
     }
-    .header .container{
-        @apply border-b-[1px] py-[.5rem];
-    }
-
     .header__social{
-        @apply px-[.5rem] py-[1.5rem] border-b-[1px];
+        @apply px-[.5rem] py-[1.5rem] border-b-[1px] bg-light;
     }
     .header__social ul{
         @apply flex justify-center gap-[1rem];
@@ -29,54 +35,51 @@
         @apply text-[1.2rem];
     }
     .header__actions{
-        @apply block fixed top-[4.9rem] w-[40%] left-[-100rem] h-[100vh] pb-[6rem] overflow-hidden overflow-y-auto ease-in duration-[.5s] lg:hidden;
+        @apply block fixed top-[2.9rem] w-[50%] left-[-100rem] h-[100vh] bg-light pb-[6rem] z-50 overflow-hidden overflow-y-auto ease-in duration-[.5s] lg:hidden;
     }
     .header__actions.open{
         @apply left-0 ease-in duration-[.5s];
     }
     .header__list{
-        @apply lg:flex;
+        @apply lg:flex items-center justify-evenly;
     }
     .header__item:first-child{
-        @apply bg-primary text-light;
+        @apply bg-primary text-light lg:bg-transparent;
     }
-    .header__item h4{
-        @apply flex justify-between py-[1.2rem] text-[1rem] cursor-pointer hover:bg-primary hover:text-light duration-[.5s] transition-all;
+    .header__item a{
+        @apply flex justify-between py-[1.2rem] text-[1rem] cursor-pointer hover:bg-primary hover:text-light duration-[.5s] transition-all lg:px-[2rem] lg:text-light lg:font-bold;
     }
 
-    .header__item i{
-        @apply transition ease-linear duration-300;
+    .header__item a i{
+        @apply transition ease-linear duration-300 lg:hidden;
     }
-    .header__item i.open{
+    .header__item a i.open{
         @apply transition ease-linear duration-300 rotate-[180deg];
     }
-
     .header__item ul{
-        @apply max-h-0 overflow-hidden duration-[.5s] transition ease-in;
+        @apply max-h-0 overflow-hidden opacity-0 duration-500 transition-all;
     }
     .header__item ul li{
         @apply my-[.5rem];
     }
-
     .header__item ul.open{
-        @apply max-h-[200rem] p-[1rem] transition ease-linear duration-[.5s];
+        @apply max-h-[200rem] overflow-visible opacity-100 duration-500 transition-all;
     }
     .header__item ul li{
-        @apply hover:bg-primary py-[1rem] hover:text-light duration-[.5s] transition-all;
+        @apply py-[1rem] hover:text-light transition-all;
     }
     .elements{
-        @apply max-h-0 overflow-hidden duration-[.5s] transition ease-in;
+        @apply max-h-0 overflow-hidden transition-all;
     }
     .elements.open{
-        @apply max-h-[200rem] overflow-visible py-[.5rem] transition ease-linear duration-[.5s];
+        @apply max-h-[200rem] overflow-visible py-[.5rem] transition;
     }
     .elements ul{
-        @apply max-h-[200rem] my-[1rem] overflow-visible duration-[.5s] transition ease-in;
+        @apply max-h-[200rem] my-[1rem] overflow-visible transition;
     }
     .elements h5{
         @apply text-primary text-[1.2rem] border-b-[1px];
     }
-
     .toggle__menu{
         @apply px-[.8rem] py-[1rem] lg:hidden;
     }
@@ -108,7 +111,7 @@
         @apply translate-x-0 translate-y-[-15px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
     }
     .header__details{
-        @apply block fixed bottom-[-100rem] max-h-0 overflow-hidden right-0 bg-light p-[1rem] ease-linear duration-[.5s] lg:relative lg:top-0 lg:max-h-[3rem] lg:flex lg:items-center lg:gap-[2rem];
+        @apply block absolute bg-light p-[1rem] right-0 top-[6rem] opacity-0 z-50 overflow-hidden transition-all duration-500 lg:relative lg:overflow-visible lg:max-h-full lg:opacity-100 lg:top-0 lg:right-0 lg:flex lg:items-center lg:gap-[1rem];
     }
     .header__details i{
         @apply mr-[1rem];
@@ -117,7 +120,7 @@
         @apply p-[.5rem];
     }
     .header__details.open{
-        @apply bottom-[41rem] max-h-[12rem] ease-linear duration-[.5s];
+        @apply top-[2.9rem] opacity-100 transition-all duration-500;
     }
     .header__btn{
         @apply my-[1rem] flex justify-center;
@@ -129,18 +132,121 @@
         @apply bg-[#50ba87] duration-[.5s] transition-colors;
     }
     .header__nav{
-        @apply hidden lg:flex lg:justify-center lg:items-center lg:bg-dark;
+        @apply bg-white lg:bg-[#162e44] duration-500 absolute flex flex-col h-screen overflow-y-scroll left-[-100rem] overflow-hidden text-center lg:relative lg:overflow-visible lg:h-[100%] lg:flex-row-reverse lg:items-center lg:justify-evenly lg:w-full lg:mx-auto lg:left-0 transition-all;
     }
-    .header__icons ul{
-        @apply flex;
+    .header__nav ul{
+        @apply lg:flex transition-all;
     }
-    .header__icons{
-        @apply px-[.5rem] py-[1.5rem] border-b-[1px];
+    .header__nav ul li{
+        @apply my-1 lg:my-0 lg:border-t-4 lg:border-transparent lg:hover:border-primary transition-all;
     }
-    .header__icons ul{
-        @apply flex justify-center gap-[1rem];
+    .header__nav ul li a{
+        @apply  hover:text-white lg:text-white transition-all;
     }
-    .header__icons ul li a i{
-        @apply text-[1.2rem];
+    .header__nav ul li a{
+        @apply hover:bg-primary lg:hover:bg-slate-600;
     }
+    .header__nav ul li:hover .dropdown{
+        @apply lg:overflow-visible lg:top-[3.8rem] lg:max-h-[40rem] opacity-100 transition-all;
+    }
+    .header__nav ul li:first-child{
+        @apply lg:border-primary;
+    }
+    .header__nav ul li a{
+        @apply flex items-center justify-between p-4;
+    }
+    .header__nav ul li a i{
+        @apply lg:hidden;
+    }
+    .header__nav.open{
+        @apply duration-500 top-[4rem] left-0  transition-all lg:top-0;
+    }
+    .dropdown{
+        @apply max-h-0 bg-white overflow-hidden transition-all lg:absolute lg:top-[6rem] lg:overflow-hidden lg:opacity-0 lg:max-h-0 lg:text-dark lg:flex duration-500;
+    }
+    .dropdown__item{
+        @apply lg:mx-[1rem];
+    }
+    .dropdown h4{
+        @apply text-[2rem] text-left text-primary mx-3 border-b-2 lg:border-transparent;
+    }
+    .dropdown ul{
+        @apply flex-col m-3;
+    }
+    .dropdown ul li{
+        @apply lg:border-t-0 ;
+    }
+    .dropdown ul li a{
+        @apply h-[1rem] lg:text-dark lg:hover:bg-transparent lg:translate-x-1 lg:hover:translate-x-0 lg:hover:text-dark lg:border-transparent lg:border-l-4 lg:hover:border-primary;
+    }
+    .dropdown.open{
+        @apply max-h-full transition-all lg:hidden;
+    }
+    .header__nav__icons{
+        @apply p-5 border-b-2 w-full mb-5 lg:flex lg:p-0 lg:mb-0 lg:border-0 lg:gap-3 lg:mr-5 lg:w-[unset];
+    }
+    .header__nav__icons a{
+        @apply text-[1.5rem] hover:text-primary lg:text-white transition-all duration-500 mx-1;
+    }
+    .header__nav__container{
+        @apply lg:bg-dark;
+    }
+    .header__nav ul li:last-child .dropdown{
+        @apply lg:left-0;
+    }
+    .header__nav ul li:last-child .dropdown ul{
+        @apply lg:grid lg:grid-cols-2 lg:border-r-2 lg:px-5 lg:w-[30rem];
+    }
+}
+
+@layer components{
+    .banner{
+        @apply relative;
+    }
+
+    .banner__slide-1{
+        @apply bg-slide1 flex items-center bg-cover min-h-[54rem];
+    }
+    .banner__slide-2{
+        @apply bg-slide2 flex items-center bg-cover min-h-[54rem];
+    }
+    .banner__slide-3{
+        @apply bg-slide3 flex items-center bg-cover min-h-[54rem];
+    }
+    .banner__text{
+        @apply p-[1.5rem] lg:mx-auto  max-w-[50rem];
+    }
+    .banner__text h4{
+        @apply text-light font-semibold;
+    }
+    .banner__text h2{
+        @apply text-light text-[2rem] mt-[1rem] mb-[2rem] lg:text-[4rem];
+    }
+    .banner__text h2 span{
+        @apply font-bold;
+    }
+    .banner__btn{
+        @apply my-[1rem];
+    }
+    .banner__btn a{
+        @apply text-center text-light px-[2rem] py-[1rem] bg-transparent border-[2px] border-light w-full h-[3rem];
+    }
+    .banner__btn a:hover{
+        @apply bg-[#50ba87] duration-[.5s] transition-colors;
+    }
+    /* .banner__slider{
+        @apply absolute bottom-[15rem] right-[25rem] px-[.8rem] py-[1rem];
+    }
+    .banner__slider span{
+        @apply w-[.8rem] h-[.8rem] bg-dark block duration-[.5s] ease-in cursor-pointer;
+    }
+    .banner__slider span:nth-child(2){
+        @apply my-[.5rem];
+    }
+    .banner__slider.open span:first-child{
+        @apply translate-x-0 translate-y-[9px] bg-dark duration-[.5s] rotate-[225deg] ease-in;
+    }
+    .banner__slider.open span:last-child{
+        @apply translate-x-0 translate-y-[-9px] bg-dark duration-[.5s] rotate-[-225deg] ease-in;
+    } */
 }
