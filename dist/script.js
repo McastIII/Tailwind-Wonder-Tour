@@ -21,7 +21,6 @@ three.addEventListener("click", () => {
   quote.classList.toggle("open");
   toggleMenu.classList.remove("open");
     mobileNav.classList.remove("open");
-    header.classList.remove("open");
 });
 
 //drop down
@@ -40,3 +39,28 @@ nav.forEach((baba) => {
     baba.querySelector("i").classList.toggle("open");
   });
 });
+
+//coffee nav
+const starNav = document.querySelectorAll(".discover__nav__link");
+const starContent = document.querySelectorAll(".discover__tab__content");
+starNav.forEach((nav) => {
+    nav.addEventListener("click", () => {
+    removeActiveStar();
+    nav.classList.add("active");
+    const activeContent = document.querySelector(`#${nav.id}-content`);
+    removeActiveContent();
+    activeContent.classList.add("active");
+    });
+});
+
+function removeActiveStar() {
+  starNav.forEach((nav) => {
+  nav.classList.remove("active");
+  });
+}
+
+function removeActiveContent() {
+  starContent.forEach((nav) => {
+  nav.classList.remove("active");
+  });
+}

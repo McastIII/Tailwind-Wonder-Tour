@@ -10,6 +10,10 @@ module.exports = {
         grey: '#f6f6f6',
       },
 
+      fontFamily: {
+        'Montserrat' :['Montserrat','sans-serif']
+      },
+
       backgroundImage: {
         'slide1': 'url("./img/slider-4-slide-1-1920x678.jpg")',
         'slide2': 'url("./img/slider-4-slide-2-1920x678.jpg")',
