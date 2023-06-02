@@ -130,7 +130,7 @@ body{
         @apply my-[1rem] flex justify-center;
     }
     .header__btn a{
-        @apply text-center p-[.7rem] bg-transparent border-[2px] border-primary w-[10rem] h-[3rem];
+        @apply text-center p-[.7rem] bg-transparent border-[2px] border-primary w-[12rem] h-[3rem];
     }
     .header__btn a:hover{
         @apply bg-[#50ba87] duration-[.5s] transition-colors;
@@ -313,48 +313,127 @@ body{
         @apply text-center font-semibold text-[1.5rem] my-[2rem];
     }
     .discover__tab__content{
-        @apply absolute opacity-0 mx-auto max-w-[30rem] translate-x-[5rem]; 
+        @apply absolute hidden mx-auto max-w-[30rem] translate-x-[5rem]; 
     }
     .discover__tab__content p{
         @apply text-center my-[1rem];
     }
     .discover__tab__content.active{
-        @apply opacity-100 translate-x-0;
+        @apply inline-block translate-x-0;
     }
     .discover__btn{
         @apply  mt-[4rem] flex gap-[2rem] justify-center;
     }
-    .btn.primary{
-        @apply text-center text-light bg-primary border-[2px] border-primary px-[2rem] hover:border-dark hover:bg-transparent hover:text-dark py-[1rem] w-[11rem] h-[4rem];
+    .discover__btn a:first-child{
+        @apply text-center text-light bg-primary border-[2px] border-primary px-[2rem] py-[1rem] w-[11rem] h-[4rem];
     }
-    .btn.clear{
-        @apply text-center text-dark px-[2rem] py-[1rem] bg-transparent border-[2px] border-dark hover:bg-primary hover:border-primary w-[11rem] h-[4rem];
+    .discover__btn a:first-child:hover{
+        @apply border-dark bg-transparent text-dark transition-all duration-500;
+    }
+    .discover__btn a:last-child{
+        @apply text-center text-dark px-[2rem] py-[1rem] bg-transparent border-[2px] border-dark w-[11rem] h-[4rem];
+    }
+    .discover__btn a:last-child:hover{
+        @apply bg-primary border-primary transition-all duration-500;
     }
 }
 
 @layer components{
         .services__wrapper h2{
-        @apply flex text-dark text-[2rem] justify-center mb-[2rem] font-bold;
+        @apply flex text-dark text-[2rem] justify-center mb-[2rem] font-semibold;
         }
-        .card__list i{
-            @apply flex text-[2rem] justify-center my-[1.5rem] text-primary; 
+        .services__item i{
+            @apply flex text-[2rem] justify-center my-[1.5rem] text-primary lg:mt-0 lg:pr-[1rem]; 
         }
-        .card__list{
-            @apply lg:flex lg:items-start;
+        .services__item{
+            @apply lg:flex lg:items-start lg:p-[2rem];
         }
-        .card__list:first-child i{
+        .services__item:first-child i{
             @apply rotate-[269deg];
         }
-        .card__list h3{
-            @apply flex text-[2rem] justify-center lg:text-[1.2rem];
+        .services__item h3{
+            @apply flex text-[1.3rem] hover:text-primary cursor-pointer justify-center lg:text-[1.2rem] lg:text-left lg:justify-between lg:items-start;
         }
-        .card__list p{
-            @apply flex max-w-[25rem] text-center mx-auto my-[1rem];
+        .services__item p{
+            @apply flex max-w-[25rem] text-gray-500 text-center mx-auto my-[1rem] lg:text-justify;
         }
-         .card__list{
+         .services__item{
             @apply border-[6px] text-dark mb-[2rem];
         }
-        .card__all{
-            @apply lg:grid lg:grid-cols-3 lg:w-full lg:max-w-[70rem] lg:mx-auto lg:gap-3;
+        .services__list{
+            @apply lg:grid lg:grid-cols-3 lg:max-w-[70rem] lg:mx-auto lg:gap-3;
         }  
+}
+
+@layer components{
+    .buy__list{
+        @apply p-[2rem];
+    }
+    .buy__img figure{
+        @apply overflow-hidden;
+    }
+    .buy__img p{
+        @apply absolute overflow-hidden top-0 right-0 px-[1rem] py-1 font-bold text-white bg-transparent z-20;
+    }
+    .buy__img p::before{
+        @apply absolute right-[-2rem] top-0 bg-primary block content-[""] w-[5.5rem] h-[2rem] z-[-1] origin-bottom-left skew-x-[45deg];
+    }
+    .buy__img figure img{
+        @apply flex m-auto  cursor-pointer lg:hover:scale-[1.08] transition-all duration-500;
+    }
+    .buy__item{
+        @apply relative lg:border-[1px] lg:border-gray-300 lg:flex lg:items-center lg:max-w-[70rem] lg:mx-auto lg:mb-[2rem];
+    }
+    .buy__text{
+        @apply lg:max-w-[25rem] lg:mx-auto;
+    }
+    .buy__text span{
+        @apply mr-[1rem] my-[1.5rem];
+    } 
+    .buy__text h5{
+        @apply my-[1rem] text-gray-500;
+    }
+    .buy__text h3{
+        @apply text-[1.3rem] text-dark mt-[1rem] font-semibold;
+    }
+    .buy__text p{
+        @apply text-gray-500 text-[.9rem];
+    }
+     .buy__title h2{
+        @apply text-center font-semibold text-dark text-[2rem] mt-[2rem];
+     }
+     .buy__btn{
+        @apply my-[2rem] py-[1rem];
+     }
+    .buy__btn a{
+        @apply text-center text-dark  px-[2rem] py-[1rem] bg-transparent border-[2px] border-dark w-[11rem] h-[4rem];
+    }
+    .buy__btn a:hover{
+        @apply bg-primary border-primary transition-all duration-500;
+    }
+
+}
+
+@layer components{
+.team .container{
+    @apply bg-light;
+}
+  .team__title h2{
+    @apply flex flex-wrap  max-w-[20rem] mx-auto text-center text-[2rem] font-semibold;
+  }
+  .team__list{
+    @apply my-[2rem];
+  }
+  .team__member{
+    @apply bg-pink-400 mb-[1rem] max-w-[20rem];
+  }
+  .team__image{
+    @apply h-[5rem];
+  }
+  .team__image img{
+    @apply mx-auto mb-[2rem] rounded-full border-[.8rem]  border-light;
+  }
+  .team__info{
+    @apply text-center p-[1rem];
+  }
 }
