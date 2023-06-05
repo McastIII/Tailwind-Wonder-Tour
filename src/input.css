@@ -240,7 +240,7 @@ body{
 }
 
 @layer components{
-    .container{
+    .tours .container{
         @apply bg-[#f7f7f7];
     }
     .tours__list{
@@ -415,25 +415,139 @@ body{
 }
 
 @layer components{
-.team .container{
+    .team .container{
     @apply bg-light;
 }
-  .team__title h2{
+    .team__title h2{
     @apply flex flex-wrap  max-w-[20rem] mx-auto text-center text-[2rem] font-semibold;
   }
-  .team__list{
-    @apply my-[2rem];
-  }
-  .team__member{
-    @apply bg-pink-400 mb-[1rem] max-w-[20rem];
-  }
-  .team__image{
-    @apply h-[5rem];
-  }
-  .team__image img{
-    @apply mx-auto mb-[2rem] rounded-full border-[.8rem]  border-light;
-  }
-  .team__info{
-    @apply text-center p-[1rem];
-  }
+    .team__list{
+    @apply flex flex-col justify-center items-center md:grid md:grid-cols-2 md:gap-2  lg:grid-cols-4 lg:max-w-[70rem] lg:gap-[2rem] lg:mx-auto;
 }
+    .team__member{
+    @apply my-[.5rem];
+} 
+    /* .team__member img{
+        @apply bg-dark left-[2rem];
+    } */
+    .team__image img{
+    @apply border-[.8rem] relative left-0 top-[3rem] mx-auto rounded-full border-light lg:hover:-translate-y-4 lg:hover:border-primary transition-all;
+}
+    .team__image:hover img{
+    @apply lg:-translate-y-4 lg:border-primary transition-all;
+}
+    .team__info{
+    @apply bg-gray-100 w-[18rem] h-[13rem] lg:w-[17rem] font-semibold mx-auto text-center  lg:px-[4rem];
+}
+    .team__info ul{
+        @apply pt-[5rem];
+    }
+    .team__info a{
+    @apply leading-[2rem] hover:text-primary transition-all duration-500;
+    }
+}
+
+@layer components{
+    .book{
+        @apply relative bg-parallax1 flex items-center bg-cover bg-top min-h-[20rem] lg:bg-center lg:min-h-[30rem] bg-fixed;
+    }
+    .book__wrapper{
+        @apply pt-[4rem] lg:mx-auto lg:max-w-[70rem];
+    }
+    .book__text{
+        @apply text-light mx-auto lg:max-w-[40rem];
+    }
+    .book__text h2{
+        @apply text-[2rem] text-center px-[2rem] lg:text-[3rem];
+    }
+    .book__text h2 span{
+        @apply font-bold;
+    }
+    .book__text h4{
+        @apply text-center px-[1rem];
+    }
+    .book__btn{
+        @apply flex justify-center my-[2rem] py-[1rem];
+     }
+    .book__btn a{
+        @apply text-center text-light  px-[2rem] py-[1rem] bg-primary font-semibold border-[2px] border-primary w-[13.5rem] h-[3.5rem];
+    }
+    .book__btn a:hover{
+        @apply bg-transparent border-light text-light transition-all duration-500;
+    }
+    
+}
+
+@layer components{
+    .people .container{
+        @apply bg-[#f7f7f7];
+    }
+    .people__title h2{
+        @apply text-center text-[2rem] pt-[2rem] font-semibold;
+    }
+    .people__wrapper{
+        @apply lg:max-w-[70rem] lg:mx-auto;
+    }
+    .people__list{
+        @apply lg:flex lg:justify-center lg:items-center gap-[2rem]; 
+    }
+    .people__item{
+        @apply bg-light border-[1px] drop-shadow-2xl px-[.5rem] pb-[1rem] my-[4.5rem] lg:max-w-[21rem];
+    }
+    .people__image{
+        @apply flex justify-center;
+    }
+    .people__image img{
+        @apply cursor-pointer border-[12px] border-light rounded-full mt-[-3rem];
+    }
+    .people__text{
+        @apply mx-auto;
+    }
+    .people__text p{
+        @apply text-center text-[.9rem] my-[1rem] text-gray-600;
+    }
+    .people__text h3{
+        @apply text-primary text-[1.3rem] text-center cursor-pointer hover:text-green-400;
+    }
+
+}
+
+@layer components{
+    .years__title h2{
+        @apply text-center text-[2rem] pt-[2rem] font-semibold;
+    }
+    .years__wrapper{
+        @apply lg:max-w-[70rem] mx-auto;
+    }
+    .years__list{
+        @apply my-[2rem] lg:flex lg:items-center lg:justify-center lg:gap-[2rem];
+    }
+    .years__item{
+        @apply my-[2rem];
+    }
+    .years__bg{
+        @apply bg-years flex mx-auto items-center bg-cover w-[18rem] h-[16rem] lg:w-[21rem] lg:h-[19rem];
+    }
+    .years__content{
+        @apply bg-light py-[4rem] w-[16rem] h-[14rem] mx-auto lg:w-[19rem] lg:h-[17rem];
+    }
+    .years__content h3{
+        @apply flex justify-center text-center text-[2.5rem] font-bold lg:text-[4rem];
+    }
+    .years__content h4{
+        @apply flex justify-center text-center max-w-[16rem] font-semibold lg:text-[1.5rem] lg:max-w-[10rem] lg:mx-auto;
+    }
+
+}
+@layer components{
+    .signup{
+        @apply relative bg-parallax2 flex items-center bg-cover bg-center min-h-[20rem] lg:bg-center lg:min-h-[30rem] bg-fixed;
+    }
+    .signup__text h2{
+        @apply text-light text-center text-[2rem] font-semibold mb-[1rem];
+    }
+    .signup__text p{
+        @apply text-light text-center;
+    }
+}
+
