@@ -1,4 +1,25 @@
 @tailwind base;
+/* --------SCROLLBAR-------- */
+:root {
+	--primary: #01b3a7;
+	--light: #ffffff;
+}
+
+/* Chrome, Edge, and Safari browsers */
+*::-webkit-scrollbar {
+	width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--light);
+	border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--primary);
+	border-radius: 10px;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -13,11 +34,29 @@ body{
     @apply absolute z-[999] right-[2rem] top-[50%] lg:top-[45%] lg:right-[15%];
 }
 .tns-nav button{
-    @apply bg-dark hover:bg-light hover:opacity-30 focus:bg-primary w-[1rem] h-[1rem] m-[.5rem] flex;
+    @apply bg-gray-400 hover:bg-light hover:opacity-30 focus:bg-primary w-[1rem] h-[1rem] m-[.5rem] flex;
 }
 .tns-nav .tns-nav-active{
     @apply bg-primary;
 }
+.blog .tns-nav{
+    @apply absolute z-50  top-[93%] left-[35%] lg:left-[45.5%];
+}
+.blog .tns-nav button{
+    @apply bg-gray-400 hover:bg-light hover:opacity-30 focus:bg-primary w-[.8rem] h-[.8rem] lg:w-[1rem] lg:h-[1rem] m-[.5rem] inline-flex;
+}
+ .blog .tns-nav .tns-nav-active{
+    @apply bg-primary;
+} 
+.gallery .tns-nav{
+    @apply absolute z-50  top-[85%] left-[30%] lg:top-[45%] lg:right-[15%];
+}
+.gallery .tns-nav button{
+    @apply bg-gray-400 hover:bg-light hover:opacity-30 focus:bg-primary w-[.8rem] h-[.8rem] m-[.5rem] inline-flex;
+}
+ .gallery .tns-nav .tns-nav-active{
+    @apply bg-primary;
+} 
 
 @layer base{
     html{
@@ -540,14 +579,223 @@ body{
 
 }
 @layer components{
-    .signup{
-        @apply relative bg-parallax2 flex items-center bg-cover bg-center min-h-[20rem] lg:bg-center lg:min-h-[30rem] bg-fixed;
+        .signup{
+        @apply w-full;
     }
-    .signup__text h2{
-        @apply text-light text-center text-[2rem] font-semibold mb-[1rem];
+        .signup__wrapper{
+            @apply bg-parallax2 bg-no-repeat min-h-[22rem] bg-center w-full bg-fixed;
     }
-    .signup__text p{
-        @apply text-light text-center;
+       .signup__text h2{
+        @apply pt-[2rem] text-center font-semibold text-[2rem] text-light;
+    }
+       .signup__text p{
+        @apply text-center text-light pt-3 mx-[1rem] 
+    }
+        .signup__wrapper form{
+            @apply lg:flex max-w-[28rem] lg:mx-auto;
+        }
+       .signup__wrap{
+        @apply pt-[1rem] flex flex-col lg:w-fit lg:mx-auto lg:flex-row;
+    }
+        .signup__wrap input{
+            @apply p-[1rem] bg-white mx-[1rem]  bg-opacity-40 lg:my-[1rem] lg:mr-[1rem] lg:w-[20rem];
+    }
+        .signup__wrap input::focus{
+            @apply border-none;
+    }
+        .signup__wrap input::placeholder{
+            @apply text-white;
+    }
+        .signup__btn{
+            @apply flex justify-center mt-[.5rem] lg:mt-[1rem];
+        }
+        .signup__btn a{
+            @apply bg-primary font-semibold text-center text-light p-[1rem] mx-[1rem] my-[1rem] w-[25.5rem] hover:bg-dark transition-all duration-300 lg:w-[8rem] lg:p-[.9rem] lg:h-[3.5rem];
     }
 }
 
+@layer components{
+    .blog{
+        @apply lg:max-w-[70rem] lg:m-auto relative;
+    }
+    .blog__wrapper{
+        @apply mx-auto;
+    }
+    .blog__title h2{
+        @apply text-center text-[2rem] pt-[2rem] font-semibold mb-[2rem]; 
+    }
+    .blog__slide{
+        @apply relative w-fit flex items-center justify-center pb-[5rem];
+    }
+    .blog__slide:hover img{
+        @apply lg:scale-105 transition-all duration-500;
+    }
+    .blog__slide:hover ul li{
+        @apply h-full translate-y-0 transition-all opacity-100;
+    }
+    .blog__bg{
+        @apply overflow-hidden w-fit mx-auto;
+    }
+    .blog__bg img{
+        @apply w-fit transition-all duration-500 ;
+    }
+    .blog__content{
+        @apply text-center absolute bottom-10 bg-white w-[80%] mx-auto left-[10%] shadow-md p-[1rem] transition-all;
+    }
+    .blog__content h3{
+        @apply text-[1.4rem] font-bold hover:text-primary transition-all duration-500;
+    }
+    .blog__content h4{
+        @apply text-[1.2rem] text-primary;
+    }
+    .blog__content ul{
+        @apply flex items-center justify-center gap-2;
+    }
+    .blog__content ul li{
+        @apply lg:overflow-hidden lg:-translate-y-5 lg:h-0 lg:opacity-0 transition-all;
+    }
+    .blog__content ul li a{
+        @apply text-[1.5rem] hover:text-primary transition-all duration-500;
+    }
+}
+
+@layer components{
+    
+	.gallery{
+		@apply bg-grey relative flex flex-col pb-[5rem];
+	}
+	.gallery__title h2{
+		@apply text-center bg-light px-[2rem] py-[.5rem] mb-[2rem] w-fit mx-auto;
+	}
+
+	.gallery__wrapper{
+        @apply flex items-center justify-center mx-auto;
+    }
+
+	.gallery__slide{
+	@apply relative flex flex-row justify-center items-center gap-[1rem] h-fit w-fit overflow-hidden mx-auto lg:m-0;
+	}
+
+	.gallery__item img{
+		@apply w-[25rem] transition-all duration-500;
+	}
+	.gallery__item img:hover{
+		@apply scale-105 transition-all duration-500;
+	}
+
+	.gallery__slide i{
+		@apply absolute mb-[1rem] ml-[1rem] h-[16rem] w-[22rem] lg:h-[10rem] lg:w-[14.7rem] bg-black bg-opacity-20 flex items-center justify-center mx-1 my-2 bottom-0 left-[10%] text-white text-[2rem] border-2 border-white lg:opacity-0 transition-all duration-500 lg:ml-[1rem] lg:my-[1rem];
+	}
+
+	.gallery__item{
+		@apply flex justify-center;
+	}
+}
+
+@layer components{
+    .links{
+		@apply bg-[#162e44] py-[3rem];
+	}
+
+	.links__wrapper{
+		@apply flex flex-col justify-center items-center gap-[1.5rem] lg:flex-row lg:max-w-[70rem] lg:items-start lg:gap-[10rem] lg:mx-auto;
+	}
+
+	.links-item h3{
+		@apply text-center text-[1.1rem] text-light mb-[1rem] lg:text-left;
+	}
+
+	.links-contact{
+		@apply w-[15rem];
+	}
+
+	.links-contact-details{
+		@apply flex flex-row items-start gap-[1.5rem] mb-[1rem];
+	}
+
+	.links-contact-details i{
+		@apply text-[1.2rem] text-primary;
+	}
+
+	.links-contact-details a{
+		@apply text-[1rem] text-light font-light;
+	}
+
+	.links-contact-details a:hover{
+		@apply text-primary;
+	}
+
+	.news-item{
+		@apply w-[15rem] mb-[1rem];
+	}
+
+	.news-item a{
+		@apply text-primary text-[1rem] font-medium;
+	}
+
+	.news-item a:hover{
+		@apply text-primary;
+	}
+
+	.news-item h5{
+		@apply text-gray-500 text-[.8rem];
+	}
+
+	.links-item ul{
+		@apply flex flex-wrap justify-center items-center gap-[1rem] w-[25rem] lg:flex-col lg:justify-start lg:items-start lg:h-[6rem] lg:gap-[1rem];
+	}
+
+	.links-item ul li a{
+		@apply flex items-center gap-[.5rem] text-[1rem] text-light;
+	}
+
+	.links-item ul li a:hover{
+		@apply text-primary;
+	}
+
+	.links-item ul li a i{
+		@apply text-primary text-[.5rem];
+	}
+
+	.links-btn{
+		@apply flex justify-center mt-[1.5rem] lg:block lg:mt-[1.3rem];
+	}
+    .links-btn a{
+        @apply text-center text-light  px-[2rem] py-[1rem] bg-primary font-semibold border-[2px] border-primary w-[13.5rem] h-[3.5rem] hover:bg-green-500;
+    }
+
+}
+
+@layer components{
+    .footer{
+		@apply bg-[#162e44];
+	}
+
+	.footer__wrapper{
+		@apply flex flex-col justify-center items-center gap-[1rem] lg:mx-auto lg:flex-row lg:justify-between lg:gap-0 lg:max-w-[70rem];
+	}
+
+	.footer__wrapper p{
+		@apply text-gray-500 text-[.9rem] font-medium order-1 lg:order-none;
+	}
+
+	.footer__wrapper ul{
+		@apply flex items-center gap-[1rem] ;
+	}
+
+	.footer__wrapper ul li a{
+		@apply text-gray-500;
+	}
+
+	.footer__wrapper ul li a:hover{
+		@apply text-primary;
+	}
+
+	.footer__wrapper .policy{
+		@apply text-gray-500 text-[.9rem] font-medium order-1 lg:order-none;
+	}
+
+	.footer__wrapper .policy:hover{
+		@apply text-primary;
+	}
+}
