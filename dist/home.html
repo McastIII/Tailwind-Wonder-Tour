@@ -65,35 +65,39 @@
                     </div>
                     <div class="header__item">
                         <a href="javascript:void(0)">Pages<i class="fa-solid fa-chevron-down"></i></a>
-                        <div class="elements">
-                            <h5>Elements</h5>
-                            <ul>
-                                <li><a href="">Typography</a></li>
-                                <li><a href="">Buttons</a></li>
-                                <li><a href="">Forms</a></li>
-                                <li><a href="">Tabs and Accordions</a></li>
-                                <li><a href="">Counters</a></li>
-                                <li><a href="">Icons with Text</a></li>
-                                <li><a href="">Progress Bars</a></li>
-                                <li><a href="">Grid System</a></li>
-                                <li><a href="">Privacy Policy</a></li>
-                            </ul>
-                            <h5>Additional Pages</h5>
-                            <ul>
-                                <li><a href="">Services</a></li>
-                                <li><a href="">Testimonials</a></li>
-                                <li><a href="">404 Page</a></li>
-                                <li><a href="">503 Page</a></li>
-                                <li><a href="">Pricing</a></li>
-                                <li><a href="">Coming Soon</a></li>
-                                <li><a href="">Contact Us 2</a></li>
-                                <li><a href="">FAQ</a></li>
-                                <li><a href="">Search Results</a></li>
-                            </ul>
+                        <div class="header__item__list">
+                            <div class="elements">
+                                <h5>Elements</h5>
+                                <ul>
+                                    <li><a href="">Typography</a></li>
+                                    <li><a href="">Buttons</a></li>
+                                    <li><a href="">Forms</a></li>
+                                    <li><a href="">Tabs and Accordions</a></li>
+                                    <li><a href="">Counters</a></li>
+                                    <li><a href="">Icons with Text</a></li>
+                                    <li><a href="">Progress Bars</a></li>
+                                    <li><a href="">Grid System</a></li>
+                                    <li><a href="">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="elements">
+                                <h5>Additional Pages</h5>
+                                <ul>
+                                    <li><a href="">Services</a></li>
+                                    <li><a href="">Testimonials</a></li>
+                                    <li><a href="">404 Page</a></li>
+                                    <li><a href="">503 Page</a></li>
+                                    <li><a href="">Pricing</a></li>
+                                    <li><a href="">Coming Soon</a></li>
+                                    <li><a href="">Contact Us 2</a></li>
+                                    <li><a href="">FAQ</a></li>
+                                    <li><a href="">Search Results</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                    </div>
+                    </div>
             <div class="toggle__menu">
                 <span></span>
                 <span></span>
@@ -240,6 +244,7 @@
 
     <section class="tours">
         <div class="container">
+            <button onclick="topFunction()" id="roll-up" title="Go to top"><i class="fa-solid fa-chevron-up"></i></button>
             <div class="tours__wrapper">
                 <div class="tours__list">
                     <div class="tours__item">
@@ -268,7 +273,11 @@
                     </div>
                 </div>
                 <div class="tours__btn">
-                    <a href="">Other Tours<i class="fa-solid fa-arrow-right"></i></a>
+                    <a href=""> Other Tours </a>
+                    <a href="" class="arrow-content">
+                        <span></span>
+                        <i class="fa-solid fa-caret-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -691,92 +700,106 @@
             </div>
         </div>
     </section>
-    
+
     <section class="gallery">
         <div class="gallery__title">
-            <h2>Gallery</h2>
+            <h3>Gallery</h3>
         </div>
         <div class="gallery__wrapper">
             <div class="gallery__slide">
                 <div class="gallery__item">
                     <img src="./img/gallery-image-1-270x195.jpg" alt="">
                 </div>
-                <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <div class="gallery__icon">
+                  <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                </div>
             </div>
             <div class="gallery__slide">
                 <div class="gallery__item">
                     <img src="./img/gallery-image-2-270x195.jpg" alt="">
                 </div>
-                <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <div class="gallery__icon">
+                  <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                </div>
             </div>
             <div class="gallery__slide">
                 <div class="gallery__item">
                     <img src="./img/gallery-image-3-270x195.jpg" alt="">
                 </div>
-                <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                <div class="gallery__icon">
+                  <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                </div>
             </div>
             <div class="gallery__slide">
-                <div class="gallery__item">
-                    <img src="./img/gallery-image-4-270x195.jpg" alt="">
-                </div>
+              <div class="gallery__item">
+                  <img src="./img/gallery-image-4-270x195.jpg" alt="">
+              </div>
+              <div class="gallery__icon">
                 <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+              </div>
             </div>
             <div class="gallery__slide">
-                <div class="gallery__item">
-                    <img src="./img/gallery-image-5-270x195.jpg" alt="">
-                </div>
+              <div class="gallery__item">
+                  <img src="./img/gallery-image-5-270x195.jpg" alt="">
+              </div>
+              <div class="gallery__icon">
                 <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+              </div>
             </div>
             <div class="gallery__slide">
-                <div class="gallery__item">
-                    <img src="./img/gallery-image-6-270x195.jpg" alt="">
-                </div>
+              <div class="gallery__item">
+                  <img src="./img/gallery-image-6-270x195.jpg" alt="">
+              </div>
+              <div class="gallery__icon">
                 <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+              </div>
             </div>
             <div class="gallery__slide">
-                <div class="gallery__item">
-                    <img src="./img/gallery-image-7-270x195.jpg" alt="">
-                </div>
+              <div class="gallery__item">
+                  <img src="./img/gallery-image-7-270x195.jpg" alt="">
+              </div>
+              <div class="gallery__icon">
                 <a href=""><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+              </div>
             </div>
         </div>
-    </section>
-    
+      </section>
+
     <section class="links">
         <div class="container">
             <div class="links__wrapper">
     
-                <div class="links-item">
+                <div class="links__item">
                     <h3>CONTACT US</h3>
-                    <div class="links-contact">
-                        <div class="links-contact-details">
+                    <div class="links__contact">
+                        <div class="links__details">
                             <i class="fa-solid fa-phone"></i>
                             <a href="">+1 323-913-4688</a>
                         </div>
-                        <div class="links-contact-details">
+                        <div class="links__details">
                             <i class="fa-solid fa-envelope"></i>
                             <a href="">info@demolink.org</a>
                         </div>
-                        <div class="links-contact-details">
+                        <div class="links__details">
                             <i class="fa-solid fa-location-arrow"></i>
                             <a href=""> 4730 Crystal Springs Dr, Los Angeles, CA 90027</a>
                         </div>
                     </div>
                 </div>
     
-                <div class="links-item">
+                <div class="links__item">
                     <h3>POPULAR NEWS</h3>
-                    <div class="news-item">
+                    <div class="links__news">
                         <a href="">Your Personal Guide to 5 Best Places to Visit on Earth</a>
                         <h5>May 04, 2020</h5>
                     </div>
-                    <div class="news-item">
+                    <div class="links__news">
                         <a href="">Top 10 Hotels: Rating by Wonder Tour Travel Experts</a>
                         <h5>May 04, 2020</h5>
                     </div>
                 </div>
     
-                <div class="links-item">
+                <div class="links__item">
                     <h3>QUICK LINKS</h3>
                     <ul>
                         <li><a href=""><i class="fa-solid fa-circle"></i> About us</a></li>
@@ -785,13 +808,10 @@
                         <li><a href=""><i class="fa-solid fa-circle"></i> Gallery</a></li>
                         <li><a href=""><i class="fa-solid fa-circle"></i> Blog</a></li>
                     </ul>
-    
                     <div class="links-btn">
-                        <a href="" class="btn mint">Get in touch</a>
+                        <a href="">Get in touch</a>
                     </div>
-    
                 </div>
-    
             </div>
         </div>
     </section>
@@ -800,7 +820,7 @@
         <div class="container">
             <div class="footer__wrapper">
                 <p>© 2023 Wonder Tour. All rights reserved.</p>
-                <div class="footer-socials">
+                <div class="footer__icons">
                     <ul>
                         <li><a href=""> <i class="fa-brands fa-facebook-f"></i> </a></li>
                         <li><a href=""> <i class="fa-brands fa-twitter"></i> </a></li>

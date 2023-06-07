@@ -23,6 +23,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior:smooth;
+}
 body{
     font-family: Montserrat, sans-serif;
 }
@@ -31,10 +34,10 @@ body{
     @apply max-w-[140rem] mx-auto p-[1.5rem];
 }
 .tns-nav{
-    @apply absolute z-[999] right-[2rem] top-[50%] lg:top-[45%] lg:right-[15%];
+    @apply absolute z-[999] right-0 top-[50%] lg:top-[45%] lg:right-[15%];
 }
 .tns-nav button{
-    @apply bg-gray-400 hover:bg-light hover:opacity-30 focus:bg-primary w-[1rem] h-[1rem] m-[.5rem] flex;
+    @apply bg-gray-400 hover:bg-light hover:opacity-30 focus:bg-primary w-[.8rem] h-[.8rem] m-[.5rem] flex;
 }
 .tns-nav .tns-nav-active{
     @apply bg-primary;
@@ -57,6 +60,27 @@ body{
  .gallery .tns-nav .tns-nav-active{
     @apply bg-primary;
 } 
+ .gallery .tns-outer{
+    @apply lg:max-w-[100rem] lg:mx-auto;
+}
+.tns-controls{
+    @apply absolute flex justify-between items-center ml-[-4.5rem] top-[50%] z-[50] w-[91%];
+} 
+.tns-controls button{
+    @apply flex items-center;
+}
+.tns-controls button:first-child{
+    @apply  text-gray-500 transition-all hover:-translate-x-1 hover:text-primary;
+}
+.tns-controls button:last-child{
+    @apply  text-gray-500 transition-all hover:translate-x-1 hover:text-primary;
+}
+.tns-controls button:first-child::after{
+    @apply block bg-gray-500 w-[1.5rem] h-[.11rem] content-[""] hover:translate-x-2 hover:bg-primary transition-all;
+}
+.tns-controls button:last-child::before{
+    @apply block bg-gray-500 w-[1.5rem] h-[.11rem] content-[""] hover:-translate-x-2 hover:bg-primary transition-all;
+}
 
 @layer base{
     html{
@@ -66,7 +90,7 @@ body{
 
 @layer components{
     .header__wrapper{
-        @apply flex items-center z-50 lg:justify-evenly border-b-[1px];
+        @apply fixed flex items-center bg-light w-[100%] z-50 lg:justify-evenly lg:static border-b-[1px];
     }
     .header__social{
         @apply px-[.5rem] py-[1.5rem] border-b-[1px] bg-light;
@@ -81,7 +105,7 @@ body{
         @apply block fixed top-[2.9rem] w-[50%] left-[-100rem] h-[100vh] bg-light pb-[6rem] z-50 overflow-hidden overflow-y-auto ease-in duration-[.5s] lg:hidden;
     }
     .header__actions.open{
-        @apply left-0 ease-in duration-[.5s];
+        @apply fixed left-0 ease-in duration-[.5s];
     }
     .header__list{
         @apply lg:flex items-center justify-evenly;
@@ -90,9 +114,8 @@ body{
         @apply bg-primary text-light lg:bg-transparent;
     }
     .header__item a{
-        @apply flex justify-between py-[1.2rem] text-[1rem] cursor-pointer hover:bg-primary hover:text-light duration-[.5s] transition-all lg:px-[2rem] lg:text-light lg:font-bold;
+        @apply flex justify-between py-[1.2rem] text-[.8rem] cursor-pointer hover:bg-primary hover:text-light duration-[.5s] transition-all px-[1rem];
     }
-
     .header__item a i{
         @apply transition ease-linear duration-300 lg:hidden;
     }
@@ -109,16 +132,19 @@ body{
         @apply max-h-[200rem] overflow-visible opacity-100 duration-500 transition-all;
     }
     .header__item ul li{
-        @apply py-[1rem] hover:text-light transition-all;
+        @apply  hover:text-light transition-all;
     }
-    .elements{
-        @apply max-h-0 overflow-hidden transition-all;
+    .header__item__list{
+        @apply max-h-0 overflow-hidden transition-all overflow-y-scroll;
     }
-    .elements.open{
-        @apply max-h-[200rem] overflow-visible py-[.5rem] transition;
+    .header__item__list.open{
+        @apply max-h-[200rem] overflow-visible py-[.5rem] transition-all;
     }
-    .elements ul{
-        @apply max-h-[200rem] my-[1rem] overflow-visible transition;
+     .elements ul{
+        @apply max-h-[50rem] opacity-100 overflow-visible transition-all;
+    }
+    .elements ul li{
+        @apply hover:bg-primary;
     }
     .elements h5{
         @apply text-primary text-[1.2rem] border-b-[1px];
@@ -178,7 +204,7 @@ body{
         @apply bg-white lg:bg-[#162e44] duration-500 absolute flex flex-col h-screen overflow-y-scroll left-[-100rem] overflow-hidden text-center lg:relative lg:overflow-visible lg:h-[100%] lg:flex-row-reverse lg:items-center lg:justify-evenly lg:w-full lg:mx-auto lg:left-0 lg:z-50 transition-all;
     }
     .header__nav ul{
-        @apply lg:flex transition-all;
+        @apply lg:flex transition-all lg:relative;
     }
     .header__nav ul li{
         @apply my-1 lg:my-0 lg:border-t-4 lg:border-transparent lg:hover:border-primary transition-all;
@@ -256,13 +282,13 @@ body{
         @apply bg-slide3 flex items-center bg-cover bg-center min-h-[100vh] lg:min-h-[45rem];
     }
     .banner__text{
-        @apply p-[1.5rem] lg:mx-auto w-full max-w-[75rem];
+        @apply flex flex-col justify-center p-[1.5rem] lg:mx-auto w-full max-w-[70rem];
     }
     .banner__text h4{
         @apply text-light font-semibold;
     }
     .banner__text h2{
-        @apply text-light text-[2rem] mt-[1rem] mb-[2rem] lg:text-[4rem];
+        @apply text-light text-[2rem] my-[1rem] lg:text-[4rem];
     }
     .banner__text h2 span{
         @apply font-bold;
@@ -279,37 +305,51 @@ body{
 }
 
 @layer components{
+
+    #roll-up{
+		@apply fixed bg-primary outline-none border-none py-[.7rem] px-[.8rem] right-[1rem] bottom-[1rem] z-[5] transition-[.5s] ease-in lg:px-[1rem] lg:bottom-[3rem] lg:z-[5] lg:transition-[.5s];
+	}
+
+	#roll-up:hover{
+		@apply bg-dark transition-[.5s] ease-in;
+	}
+
+	#roll-up i{
+		@apply text-light;
+	} 
     .tours .container{
         @apply bg-[#f7f7f7];
     }
     .tours__list{
-      @apply lg:flex lg:justify-center lg:gap-[2rem];
+      @apply lg:flex lg:justify-center lg:gap-[2rem] mt-[2rem] lg:mt-0;
     }
     .tours__item{
-        @apply relative lg:top-[-3rem];
+        @apply relative lg:top-[-4rem];
     }
     .tours__item a figure{
         @apply overflow-hidden;
     }
     .tours__item a figure img{
-        @apply flex m-auto hover:scale-[1.08] transition-all duration-500;
+        @apply flex mx-auto w-[20rem] h-[22rem] hover:scale-[1.08] lg:w-[22rem] lg:h-[22rem] transition-all duration-500;
     }
     .tours__item h3{
-        @apply relative text-[1.5rem] text-light text-center top-[-3rem] font-semibold;
+        @apply relative text-[1.3rem] text-light text-center top-[-3rem] font-semibold;
     }
-    .tours__btn{
-        @apply flex justify-center;
+    .tours__btn {
+        @apply flex items-center justify-center gap-[.5rem] mb-[2rem];
     }
-    .tours__btn a{
-        @apply w-[8rem] transition-[.8s] ease-in rounded-full;
+    .tours__btn:hover .arrow-content span {
+        @apply w-[1.5rem] transition-[.8s] ease-in
+    } 
+   .arrow-content {
+        @apply relative flex items-center justify-center pt-[.2rem] lg:text-[1.2rem];
+   }
+    .arrow-content span {
+        @apply bg-dark block w-[1rem] h-[.11rem] transition-[.8s] ease-in rounded-full;
     }
-    .tours__btn a:hover{
-        @apply translate-x-2 transition-[.8s] ease-in;
-    }
-    .tours__btn a i{
-        @apply ml-[1rem];
-    }
-        
+    .arrow-content i {
+        @apply text-[.8rem] absolute right-0;
+    } 
 }
 
 @layer components
@@ -320,10 +360,6 @@ body{
     .discover__nav{
         @apply text-center max-w-[30rem] lg:max-w-[90rem];
     }
-   /* .discover-container{
-    @apply flex flex-col justify-center
-   } */
-    
     .discover__nav ul{
         @apply flex justify-center items-center flex-wrap lg:flex-nowrap;
     }
@@ -340,10 +376,10 @@ body{
         @apply  text-primary;
     }
     .discover__nav ul li a{
-        @apply text-dark text-center text-[1.2rem] hover:text-primary;
+        @apply text-gray-400 text-center text-[1.2rem] hover:text-primary;
     }
     .discover__content{
-        @apply relative min-h-[17rem];
+        @apply relative min-h-[14rem];
     }
     .discover__tab{
         @apply lg:block;
@@ -355,13 +391,13 @@ body{
         @apply absolute hidden mx-auto max-w-[30rem] translate-x-[5rem]; 
     }
     .discover__tab__content p{
-        @apply text-center my-[1rem];
+        @apply text-center text-dark text-[.9rem] font-light mt-[1.5rem];
     }
     .discover__tab__content.active{
         @apply inline-block translate-x-0;
     }
     .discover__btn{
-        @apply  mt-[4rem] flex gap-[2rem] justify-center;
+        @apply  mt-[2rem] flex gap-[2rem] justify-center;
     }
     .discover__btn a:first-child{
         @apply text-center text-light bg-primary border-[2px] border-primary px-[2rem] py-[1rem] w-[11rem] h-[4rem];
@@ -387,6 +423,9 @@ body{
         .services__item{
             @apply lg:flex lg:items-start lg:p-[2rem];
         }
+        .services__item:hover{
+			@apply lg:border-transparent lg:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all duration-500;
+		}
         .services__item:first-child i{
             @apply rotate-[269deg];
         }
@@ -418,7 +457,10 @@ body{
         @apply absolute right-[-2rem] top-0 bg-primary block content-[""] w-[5.5rem] h-[2rem] z-[-1] origin-bottom-left skew-x-[45deg];
     }
     .buy__img figure img{
-        @apply flex m-auto  cursor-pointer lg:hover:scale-[1.08] transition-all duration-500;
+        @apply flex m-auto  cursor-pointer scale-[1.1] transition-all duration-500;
+    }
+    .buy__item:hover figure img{
+        @apply scale-[1] transition-all duration-500;
     }
     .buy__item{
         @apply relative lg:border-[1px] lg:border-gray-300 lg:flex lg:items-center lg:max-w-[70rem] lg:mx-auto lg:mb-[2rem];
@@ -458,19 +500,22 @@ body{
     @apply bg-light;
 }
     .team__title h2{
-    @apply flex flex-wrap  max-w-[20rem] mx-auto text-center text-[2rem] font-semibold;
+    @apply flex flex-wrap  max-w-[20rem] mx-auto text-center text-[2rem] font-semibold lg:max-w-[50rem] lg:flex-nowrap lg:justify-center;
   }
     .team__list{
-    @apply flex flex-col justify-center items-center md:grid md:grid-cols-2 md:gap-2  lg:grid-cols-4 lg:max-w-[70rem] lg:gap-[2rem] lg:mx-auto;
+    @apply flex flex-col justify-center items-center md:grid md:grid-cols-2 md:gap-2 lg:grid-cols-4 lg:max-w-[70rem] lg:gap-[2rem] lg:mx-auto lg:text-center lg:mt-[3rem];
 }
     .team__member{
-    @apply my-[.5rem];
-} 
-    /* .team__member img{
-        @apply bg-dark left-[2rem];
-    } */
+    @apply my-[3rem] relative;
+}   
+    .team__member:first-child{
+    @apply mt-[6rem] lg:mt-[3rem];
+}
+    .team__image{
+        @apply absolute p-[.8rem] bg-light left-[4.5rem] top-[-4rem] rounded-full lg:left-[4rem] lg:top-[-5rem];
+    }
     .team__image img{
-    @apply border-[.8rem] relative left-0 top-[3rem] mx-auto rounded-full border-light lg:hover:-translate-y-4 lg:hover:border-primary transition-all;
+    @apply border-[4px] rounded-full border-light lg:hover:-translate-y-4 lg:hover:border-primary transition-all;
 }
     .team__image:hover img{
     @apply lg:-translate-y-4 lg:border-primary transition-all;
@@ -480,6 +525,9 @@ body{
 }
     .team__info ul{
         @apply pt-[5rem];
+    }
+    .team__info ul li p{
+        @apply text-primary;
     }
     .team__info a{
     @apply leading-[2rem] hover:text-primary transition-all duration-500;
@@ -580,25 +628,22 @@ body{
 }
 @layer components{
         .signup{
-        @apply w-full;
-    }
-        .signup__wrapper{
-            @apply bg-parallax2 bg-no-repeat min-h-[22rem] bg-center w-full bg-fixed;
-    }
+        @apply bg-parallax2 bg-cover bg-no-repeat min-h-[22rem] bg-center bg-fixed;
+    }   
        .signup__text h2{
-        @apply pt-[2rem] text-center font-semibold text-[2rem] text-light;
+        @apply pt-[2rem] text-center font-semibold text-[2rem] text-light mt-[2rem];
     }
        .signup__text p{
-        @apply text-center text-light pt-3 mx-[1rem] 
+        @apply text-center text-light pt-3 mx-[1rem] lg:max-w-[30rem] lg:mx-auto; 
     }
         .signup__wrapper form{
-            @apply lg:flex max-w-[28rem] lg:mx-auto;
-        }
+            @apply mx-auto lg:flex max-w-[28rem] lg:mx-auto;
+        }   
        .signup__wrap{
         @apply pt-[1rem] flex flex-col lg:w-fit lg:mx-auto lg:flex-row;
     }
         .signup__wrap input{
-            @apply p-[1rem] bg-white mx-[1rem]  bg-opacity-40 lg:my-[1rem] lg:mr-[1rem] lg:w-[20rem];
+            @apply p-[1rem] bg-white mx-[1rem] outline-none bg-opacity-40 lg:my-[1rem] lg:mr-[1rem] lg:w-[20rem];
     }
         .signup__wrap input::focus{
             @apply border-none;
@@ -610,7 +655,7 @@ body{
             @apply flex justify-center mt-[.5rem] lg:mt-[1rem];
         }
         .signup__btn a{
-            @apply bg-primary font-semibold text-center text-light p-[1rem] mx-[1rem] my-[1rem] w-[25.5rem] hover:bg-dark transition-all duration-300 lg:w-[8rem] lg:p-[.9rem] lg:h-[3.5rem];
+            @apply bg-primary font-semibold text-center text-light p-[1rem] mx-[1rem] my-[1rem] w-[26.5rem] hover:bg-dark transition-all duration-300 lg:w-[8rem] lg:p-[.9rem] lg:h-[3.5rem];
     }
 }
 
@@ -640,58 +685,69 @@ body{
         @apply w-fit transition-all duration-500 ;
     }
     .blog__content{
-        @apply text-center absolute bottom-10 bg-white w-[80%] mx-auto left-[10%] shadow-md p-[1rem] transition-all;
+        @apply text-center absolute bottom-10 bg-white w-[90%] mx-auto left-[5%] shadow-md p-[1rem] transition-all;
     }
     .blog__content h3{
-        @apply text-[1.4rem] font-bold hover:text-primary transition-all duration-500;
+        @apply text-[1.2rem] font-semibold hover:text-primary mb-[1rem] transition-all duration-500;
     }
     .blog__content h4{
-        @apply text-[1.2rem] text-primary;
+        @apply text-[1.2rem] font-semibold text-primary;
     }
     .blog__content ul{
-        @apply flex items-center justify-center gap-2;
+        @apply flex items-center justify-center gap-4;
     }
     .blog__content ul li{
         @apply lg:overflow-hidden lg:-translate-y-5 lg:h-0 lg:opacity-0 transition-all;
     }
     .blog__content ul li a{
-        @apply text-[1.5rem] hover:text-primary transition-all duration-500;
+        @apply text-[1.5rem] hover:text-primary transition-all  duration-500;
+    }
+    .blog__content ul li a i:first-child{
+        @apply px-[.5rem]
+    }
+    .blog__content ul li a i:last-child{
+        @apply px-[.6rem]
+    }
+    .blog__content ul li a i{
+        @apply text-light text-[.9rem] px-[.4rem] py-[.5rem] rounded-full bg-dark hover:bg-primary;
     }
 }
 
 @layer components{
-    
-	.gallery{
+    .gallery{
 		@apply bg-grey relative flex flex-col pb-[5rem];
 	}
-	.gallery__title h2{
-		@apply text-center bg-light px-[2rem] py-[.5rem] mb-[2rem] w-fit mx-auto;
+	.gallery__title h3{
+		@apply text-center bg-light px-[5rem] py-[.5rem] mb-[2rem] w-fit mx-auto;
 	}
-
 	.gallery__wrapper{
         @apply flex items-center justify-center mx-auto;
     }
-
 	.gallery__slide{
-	@apply relative flex flex-row justify-center items-center gap-[1rem] h-fit w-fit overflow-hidden mx-auto lg:m-0;
+	    @apply relative flex flex-row justify-center items-center gap-[1rem] h-fit w-fit overflow-hidden mx-auto lg:m-0;
 	}
-
+	.gallery__slide:hover img{
+	    @apply lg:scale-[.99] transition-all duration-300
+	}
 	.gallery__item img{
-		@apply w-[25rem] transition-all duration-500;
+		@apply w-[25rem] mx-auto transition-all duration-500 lg:w-[18rem]
 	}
-	.gallery__item img:hover{
-		@apply scale-105 transition-all duration-500;
+	.gallery__icon:hover{
+		@apply lg:bg-dark lg:bg-opacity-40 lg:min-w-[13.5vw] lg:left-[1%] lg:transition ease-in-out duration-300
 	}
-
-	.gallery__slide i{
-		@apply absolute mb-[1rem] ml-[1rem] h-[16rem] w-[22rem] lg:h-[10rem] lg:w-[14.7rem] bg-black bg-opacity-20 flex items-center justify-center mx-1 my-2 bottom-0 left-[10%] text-white text-[2rem] border-2 border-white lg:opacity-0 transition-all duration-500 lg:ml-[1rem] lg:my-[1rem];
+	.gallery__icon{
+		@apply absolute top-[0] left-[9%] min-w-[80vw] min-h-[90vh] text-[2rem] text-light bg-dark bg-opacity-40 lg:min-w-[8vw] lg:left-[1%] lg:min-h-[50vh] lg:bg-opacity-0 lg:transition ease-in-out duration-300
 	}
-
-	.gallery__item{
+	.gallery__icon:hover i{
+		@apply lg:flex lg:min-w-[12.5vw] lg:min-h-[18vh] lg:justify-center
+	}
+	.gallery__icon i{
+		@apply absolute left-[3%] top-[2%] min-w-[75vw] min-h-[27vh] border-[1px] flex justify-center items-center border-light lg:min-w-[14vw] lg:left-[1%] lg:min-h-[10vh] lg:hidden hover:text-dark hover:text-opacity-60 transition ease-in-out duration-300
+	}
+4	.gallery__item{
 		@apply flex justify-center;
 	}
 }
-
 @layer components{
     .links{
 		@apply bg-[#162e44] py-[3rem];
@@ -701,59 +757,59 @@ body{
 		@apply flex flex-col justify-center items-center gap-[1.5rem] lg:flex-row lg:max-w-[70rem] lg:items-start lg:gap-[10rem] lg:mx-auto;
 	}
 
-	.links-item h3{
+	.links__item h3{
 		@apply text-center text-[1.1rem] text-light mb-[1rem] lg:text-left;
 	}
 
-	.links-contact{
+	.links__contact{
 		@apply w-[15rem];
 	}
 
-	.links-contact-details{
+	.links__details{
 		@apply flex flex-row items-start gap-[1.5rem] mb-[1rem];
 	}
 
-	.links-contact-details i{
+	.links__details i{
 		@apply text-[1.2rem] text-primary;
 	}
 
-	.links-contact-details a{
+	.links__details a{
 		@apply text-[1rem] text-light font-light;
 	}
 
-	.links-contact-details a:hover{
+	.links__details a:hover{
 		@apply text-primary;
 	}
 
-	.news-item{
+	.links__news{
 		@apply w-[15rem] mb-[1rem];
 	}
 
-	.news-item a{
+	.links__news a{
 		@apply text-primary text-[1rem] font-medium;
 	}
 
-	.news-item a:hover{
+	.links__news a:hover{
 		@apply text-primary;
 	}
 
-	.news-item h5{
+	.links__news h5{
 		@apply text-gray-500 text-[.8rem];
 	}
 
-	.links-item ul{
+	.links__item ul{
 		@apply flex flex-wrap justify-center items-center gap-[1rem] w-[25rem] lg:flex-col lg:justify-start lg:items-start lg:h-[6rem] lg:gap-[1rem];
 	}
 
-	.links-item ul li a{
+	.links__item ul li a{
 		@apply flex items-center gap-[.5rem] text-[1rem] text-light;
 	}
 
-	.links-item ul li a:hover{
+	.links__item ul li a:hover{
 		@apply text-primary;
 	}
 
-	.links-item ul li a i{
+	.links__item ul li a i{
 		@apply text-primary text-[.5rem];
 	}
 
@@ -761,14 +817,14 @@ body{
 		@apply flex justify-center mt-[1.5rem] lg:block lg:mt-[1.3rem];
 	}
     .links-btn a{
-        @apply text-center text-light  px-[2rem] py-[1rem] bg-primary font-semibold border-[2px] border-primary w-[13.5rem] h-[3.5rem] hover:bg-green-500;
+        @apply text-center text-light p-[1rem] bg-primary font-semibold border-[2px] border-primary w-[10.5rem] h-[3.5rem] hover:bg-green-500;
     }
 
 }
 
 @layer components{
     .footer{
-		@apply bg-[#162e44];
+		@apply bg-[#11263a];
 	}
 
 	.footer__wrapper{
